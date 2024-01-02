@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            background-color: #6ea8fd;
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        h1 {
+            padding: 10px 60px;
+            margin: 5px 0 0 0;
+            background-color: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            border: 1px white solid;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App</title>
+</head>
+
+<body>
+    <h1>Tablero de posiciones!</h1>
+    <ul id="table"></ul>
+    <script>
+        const source = new EventSource("/counter")
+        const table = document.getElementById("table")
+
+        source.addEventListener("update", e => {
+            if (table.children.length > 10) table.innerHTML = ""
+
+            const li = document.createElement("li")
+            li.innerText = e.data
+            table.appendChild(li)
+        })
+    </script>
+</body>
+
+</html>
