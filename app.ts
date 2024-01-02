@@ -12,7 +12,7 @@ app.get("/counter",(c) => {
         while(true) {
             const message = `Son las ${new Date().toLocaleTimeString()}`
         await stream.writeSSE({id: String(id++), data: message, event: "update"});
-        await stream.sleep(5000);
+        await stream.sleep(1000);
         }
     })
 })

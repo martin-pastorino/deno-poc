@@ -48,10 +48,11 @@
         const table = document.getElementById("table")
 
         source.addEventListener("update", e => {
-            if (table.children.length > 10) table.innerHTML = ""
+            const index = table.children.length 
+            if (index >= 10) table.innerHTML = ""
 
             const li = document.createElement("li")
-            li.innerText = e.data
+            li.innerText = `${index +1} -- ${e.data}`
             table.appendChild(li)
         })
     </script>
